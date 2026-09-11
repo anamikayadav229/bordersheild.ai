@@ -25,6 +25,17 @@ document.getElementById('nav').addEventListener('click', e=>{
   if(item) goto(item.dataset.view);
 });
 
+/* Mobile menu toggle: open/close sidebar as overlay on small screens */
+const btnMenu = document.getElementById('btn-menu');
+const mobileBackdrop = document.getElementById('mobile-backdrop');
+if(btnMenu){
+  btnMenu.addEventListener('click', ()=> document.body.classList.toggle('sidebar-open'));
+}
+if(mobileBackdrop){
+  mobileBackdrop.addEventListener('click', ()=> document.body.classList.remove('sidebar-open'));
+}
+document.querySelectorAll('.nav-item').forEach(n=> n.addEventListener('click', ()=>{ if(window.innerWidth<=900) document.body.classList.remove('sidebar-open'); }));
+
 /* ---------------- Clock ---------------- */
 function tickClock(){
   const d = new Date();
