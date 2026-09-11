@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BorderShield AI — Identity &amp; Document Screening</title>
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<div id="app">
+  <!-- ============================= SIDEBAR ============================= -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#04141a" stroke-width="2.2"><path d="M12 2l8 3.5v6C20 17 16.5 20.5 12 22 7.5 20.5 4 17 4 11.5v-6L12 2z"/><path d="M9 12l2 2 4-4"/></svg>
+      </div>
+      <div class="brand-text">
+        <div class="name">BorderShield AI</div>
+        <div class="sub">AI Screening Platform</div>
+      </div>
+    </div>
+
+    <nav class="nav" id="nav">
+      <div class="nav-item" data-view="dashboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg><span>Dashboard</span></div>
+      <div class="nav-item" data-view="new-screening"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg><span>New Screening</span></div>
+      <div class="nav-item" data-view="doc-analysis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg><span>Document Analysis</span></div>
+      <div class="nav-item" data-view="validation"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span>Document Validation</span></div>
+      <div class="nav-item" data-view="tampering"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 3.5v6C20 17 16.5 20.5 12 22 7.5 20.5 4 17 4 11.5v-6L12 2z"/><path d="M12 8v5M12 16h.01"/></svg><span>Tampering Detection</span></div>
+      <div class="nav-item" data-view="face"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="3"/><circle cx="12" cy="10" r="2.6"/><path d="M7 17c1.2-2.2 3-3 5-3s3.8.8 5 3"/></svg><span>Face Verification</span></div>
+      <div class="nav-item" data-view="risk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20h16M7 20V10M12 20V4M17 20v-7"/></svg><span>Risk Assessment</span></div>
+      <div class="nav-divider">RECORDS</div>
+      <div class="nav-item" data-view="history"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5M12 7v5l3 3"/></svg><span>Screening History</span></div>
+      <div class="nav-item" data-view="trail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 4h13M8 12h13M8 20h13"/><circle cx="3" cy="4" r="1.6"/><circle cx="3" cy="12" r="1.6"/><circle cx="3" cy="20" r="1.6"/></svg><span>Investigation Trail</span></div>
+      <div class="nav-item" data-view="reports"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v5h5M9 13h6M9 17h6"/></svg><span>Reports</span></div>
+      <div class="nav-divider">SYSTEM</div>
+      <div class="nav-item" data-view="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1z"/></svg><span>Settings</span></div>
+    </nav>
+
+    <div class="sidebar-foot">
+      <div class="status-row"><span class="dot on"></span> AI Engine Online</div>
+      <div class="status-row"><span class="dot on"></span> OCR Engine Ready</div>
+      <div class="status-row"><span class="dot demo"></span> Verification DB: DEMO</div>
+    </div>
+  </aside>
+
+  <!-- ============================= MAIN ============================= -->
+  <div class="main">
+    <div class="topbar">
+      <div class="page-title" id="page-title">Dashboard</div>
+      <div class="topbar-right">
+        <span class="clock" id="clock">--:--:--</span>
+      </div>
+    </div>
+
+    <!-- ===== DASHBOARD ===== -->
+    <section class="view active" id="view-dashboard">
+      <div class="hero-head">
+        <h1>BorderShield AI</h1>
+        <p>AI-Based Fake Identity &amp; Document Screening System — live console overview.</p>
+      </div>
+
+      <div class="grid cols-4">
+        <div class="card stat-card">
+          <div class="label">Total Screenings</div>
+          <div class="value" id="stat-total">1,248</div>
+          <div class="delta up">▲ 6.2% vs last week</div>
+          <div class="stat-icon" style="background:rgba(59,130,246,.14);color:#8fb8ff;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div>
+        </div>
+        <div class="card stat-card">
+          <div class="label">Verified</div>
+          <div class="value" id="stat-verified">932</div>
+          <div class="delta up">▲ 3.1% verification rate</div>
+          <div class="stat-icon" style="background:var(--green-dim);color:var(--green);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div>
+        </div>
+        <div class="card stat-card">
+          <div class="label">Flagged for Review</div>
+          <div class="value" id="stat-flagged">217</div>
+          <div class="delta warn">▲ 2 new in last hour</div>
+          <div class="stat-icon" style="background:var(--amber-dim);color:var(--amber);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9L2.8 17a2 2 0 0 0 1.7 3h15a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></div>
+        </div>
+        <div class="card stat-card">
+          <div class="label">High Risk</div>
+          <div class="value" id="stat-highrisk">99</div>
+          <div class="delta down">▼ Requires escalation</div>
+          <div class="stat-icon" style="background:var(--red-dim);color:var(--red);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 3.5v6C20 17 16.5 20.5 12 22 7.5 20.5 4 17 4 11.5v-6L12 2z"/><path d="M12 8v5M12 16h.01"/></svg></div>
+        </div>
+      </div>
+
+      <div class="section-title">Recent Screening Activity</div>
+      <div class="card">
+        <table>
+          <thead><tr><th>Case ID</th><th>Document</th><th>Name</th><th>Country</th><th>Risk Score</th><th>Status</th><th>Date</th><th class="tright">Action</th></tr></thead>
+          <tbody id="dash-table-body"></tbody>
+        </table>
+      </div>
+
+      <div class="grid cols-2" style="margin-top:26px;">
+        <div class="card">
+          <div class="card-head"><h3>Risk Distribution</h3><span class="hint">last 1,248 cases</span></div>
+          <div class="card-pad">
+            <div class="bar-row"><span class="lbl">Low Risk</span><div class="bar-track"><div class="bar-fill" style="width:74.7%;background:var(--green);"></div></div><span class="pct">932</span></div>
+            <div class="bar-row"><span class="lbl">Medium Risk</span><div class="bar-track"><div class="bar-fill" style="width:13.9%;background:var(--amber);"></div></div><span class="pct">173</span></div>
+            <div class="bar-row"><span class="lbl">High Risk</span><div class="bar-track"><div class="bar-fill" style="width:7.9%;background:#ef8b2b;"></div></div><span class="pct">99</span></div>
+            <div class="bar-row"><span class="lbl">Critical Risk</span><div class="bar-track"><div class="bar-fill" style="width:3.5%;background:var(--red);"></div></div><span class="pct">44</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3>AI Detection Overview</h3><span class="hint">module accuracy</span></div>
+          <div class="card-pad" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div><div class="label" style="font-size:11.5px;color:var(--ink-500);font-weight:600;">OCR Extraction</div><div style="font-size:20px;font-weight:800;color:var(--cyan);margin-top:4px;">98.4%</div></div>
+            <div><div class="label" style="font-size:11.5px;color:var(--ink-500);font-weight:600;">Document Validation</div><div style="font-size:20px;font-weight:800;color:var(--cyan);margin-top:4px;">94.2%</div></div>
+            <div><div class="label" style="font-size:11.5px;color:var(--ink-500);font-weight:600;">Tampering Detection</div><div style="font-size:20px;font-weight:800;color:var(--cyan);margin-top:4px;">91.7%</div></div>
+            <div><div class="label" style="font-size:11.5px;color:var(--ink-500);font-weight:600;">Face Verification</div><div style="font-size:20px;font-weight:800;color:var(--cyan);margin-top:4px;">96.1%</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:26px;">
+        <button class="btn btn-primary" onclick="goto('new-screening')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg> Start New Screening</button>
+      </div>
+    </section>
+
+    <!-- ===== NEW SCREENING ===== -->
+    <section class="view" id="view-new-screening">
+      <div class="hero-head">
+        <h1>New Document Screening</h1>
+        <p>Upload or capture an identity document for AI-powered screening.</p>
+      </div>
+
+      <div id="ns-intake">
+        <div class="card card-pad">
+          <div class="upload-zone" id="drop-zone">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 16V4M7 9l5-5 5 5"/><rect x="3" y="16" width="18" height="5" rx="1.5"/></svg>
+            <div class="title">Drag &amp; drop document here</div>
+            <div class="sub">or browse files · PNG, JPG, JPEG, PDF · max 10 MB</div>
+          </div>
+          <input type="file" id="file-input" accept="image/png,image/jpeg,application/pdf" style="display:none;">
+
+          <div class="choice-row">
+            <button class="choice-card" onclick="document.getElementById('file-input').click()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4M7 9l5-5 5 5"/><rect x="3" y="16" width="18" height="5" rx="1.5"/></svg>
+              <div class="t">Upload Document</div>
+              <div class="s">Browse from device storage</div>
+            </button>
+            <button class="choice-card" onclick="openCamera()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13.5" r="3.4"/></svg>
+              <div class="t">Capture with Camera</div>
+              <div class="s">Use device camera to scan</div>
+            </button>
+            <button class="choice-card" onclick="showDemoPicker()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 3.5v6C20 17 16.5 20.5 12 22 7.5 20.5 4 17 4 11.5v-6L12 2z"/><path d="M9 12l2 2 4-4"/></svg>
+              <div class="t">Try Demo Document</div>
+              <div class="s">Runs a pre-loaded sample case</div>
+            </button>
+          </div>
+
+          <div class="doc-type-row">
+            <span class="chip">Passport</span><span class="chip">Visa</span><span class="chip">National ID</span><span class="chip">Driving Licence</span><span class="chip">Permit</span>
+          </div>
+        </div>
+
+        <!-- Camera panel -->
+        <div class="card card-pad" id="camera-panel" style="display:none;margin-top:16px;">
+          <div class="card-head" style="padding:0 0 14px;border:none;"><h3>Capture Document Using Camera</h3></div>
+          <div class="camera-wrap">
+            <video id="camera-video" autoplay playsinline></video>
+            <img id="camera-shot" class="captured" style="display:none;">
+          </div>
+          <div class="camera-controls">
+            <button class="btn btn-primary" id="btn-capture" onclick="captureShot()">Capture</button>
+            <button class="btn" id="btn-retake" style="display:none;" onclick="retakeShot()">Retake</button>
+            <button class="btn btn-primary" id="btn-usephoto" style="display:none;" onclick="usePhoto()">Use Photo</button>
+            <button class="btn btn-ghost" onclick="closeCamera()">Cancel</button>
+          </div>
+          <canvas id="camera-canvas" style="display:none;"></canvas>
+        </div>
+
+        <!-- Demo picker -->
+        <div class="card card-pad" id="demo-panel" style="display:none;margin-top:16px;">
+          <div class="card-head" style="padding:0 0 14px;border:none;display:flex;justify-content:space-between;">
+            <h3>Select a Demo Document</h3>
+            <span class="hint">DEMO DATA — not a real identity document</span>
+          </div>
+          <div class="demo-grid" id="demo-grid"></div>
+        </div>
+
+        <!-- Staged upload preview -->
+        <div class="card card-pad" id="staged-panel" style="display:none;margin-top:16px;">
+          <div class="card-head" style="padding:0 0 14px;border:none;"><h3>Document Ready for Screening</h3></div>
+          <div class="doc-preview" style="max-width:420px;"><canvas id="staged-canvas"></canvas></div>
+          <div class="wizard-actions">
+            <button class="btn" onclick="resetIntake()">Choose Different File</button>
+            <button class="btn btn-primary" onclick="beginScreening()">Begin AI Screening →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scanning workflow -->
+      <div class="card" id="scan-panel" style="display:none;margin-top:16px;">
+        <div class="card-head"><h3>AI Screening in Progress</h3><span class="hint" id="scan-case-id">—</span></div>
+        <div class="card-pad">
+          <div class="steps" id="steps-list"></div>
+          <div class="wizard-actions" id="scan-done-actions" style="display:none;">
+            <span class="hint">Screening complete.</span>
+            <button class="btn btn-primary" onclick="goto('risk')">View Risk Assessment →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DOCUMENT ANALYSIS ===== -->
+    <section class="view" id="view-doc-analysis">
+      <div class="hero-head"><h1>Document Analysis</h1><p>OCR-extracted fields with bounding-box detection and confidence scoring.</p></div>
+      <div id="da-empty" class="card"><div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="3" width="16" height="18" rx="2"/></svg><div class="t">No document loaded</div><div class="s">Run a screening from “New Screening” to see extracted data here.</div></div></div>
+      <div id="da-content" style="display:none;">
+        <div class="grid cols-2">
+          <div class="card card-pad">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+              <div>
+                <div style="font-size:11px;color:var(--ink-500);font-weight:700;">DETECTED DOCUMENT</div>
+                <div style="font-size:16px;font-weight:800;" id="da-doctype">PASSPORT</div>
+              </div>
+              <span class="badge blue" id="da-doc-conf">97.8% confidence</span>
+            </div>
+            <div class="doc-preview" id="da-preview"><canvas id="da-canvas"></canvas></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>Extracted Information</h3><button class="btn btn-sm" id="edit-toggle" onclick="toggleEdit()">Edit Extracted Data</button></div>
+            <div class="card-pad"><div class="field-list" id="field-list"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== VALIDATION ===== -->
+    <section class="view" id="view-validation">
+      <div class="hero-head"><h1>Document Validation</h1><p>Automated checks against structural, logical and demo verification-database rules.</p></div>
+      <div id="val-empty" class="card"><div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><div class="t">No validation run yet</div><div class="s">Start a screening to generate validation results.</div></div></div>
+      <div id="val-content" style="display:none;">
+        <div class="grid cols-2">
+          <div class="card">
+            <div class="card-head"><h3>Validation Checks</h3><span class="hint">9 checks</span></div>
+            <div class="card-pad"><div class="check-list" id="check-list"></div></div>
+          </div>
+          <div class="card card-pad">
+            <div style="font-size:13.5px;font-weight:700;margin-bottom:8px;">Overall Validation Result</div>
+            <div id="val-overall"></div>
+            <div class="detail-toggle" onclick="toggleDetail('val-detail')">▸ Verification Details</div>
+            <div class="detail-panel" id="val-detail">
+              <div class="kv-row"><span class="k">Database Record</span><span class="v" id="v-record">—</span></div>
+              <div class="kv-row"><span class="k">Record Status</span><span class="v" id="v-recstatus">—</span></div>
+              <div class="kv-row"><span class="k">Document Status</span><span class="v" id="v-docstatus">—</span></div>
+              <div class="kv-row"><span class="k">Blacklist Status</span><span class="v" id="v-blacklist">—</span></div>
+              <div style="margin-top:10px;"><span class="demo-tag-lg">Demo Verification Database · simulated records only</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TAMPERING ===== -->
+    <section class="view" id="view-tampering">
+      <div class="hero-head"><h1>AI Tampering Detection</h1><p>Forensic image analysis for signs of manipulation, forgery, or alteration.</p></div>
+      <div id="tp-empty" class="card"><div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l8 3.5v6C20 17 16.5 20.5 12 22 7.5 20.5 4 17 4 11.5v-6L12 2z"/></svg><div class="t">No tampering analysis yet</div><div class="s">Run a screening to generate the forensic report.</div></div></div>
+      <div id="tp-content" style="display:none;">
+        <div class="grid cols-2">
+          <div class="card card-pad">
+            <div class="card-head" style="padding:0 0 12px;border:none;"><h3>AI Analysis Overlay</h3></div>
+            <div class="doc-preview" id="tp-preview"><canvas id="tp-canvas"></canvas></div>
+            <div id="tp-region-note" style="margin-top:12px;display:none;">
+              <div class="badge red" style="margin-bottom:8px;">Suspicious Region Detected</div>
+              <div class="kv-row"><span class="k">X</span><span class="v" id="tp-x">—</span></div>
+              <div class="kv-row"><span class="k">Y</span><span class="v" id="tp-y">—</span></div>
+              <div class="kv-row"><span class="k">Width</span><span class="v" id="tp-w">—</span></div>
+              <div class="kv-row"><span class="k">Height</span><span class="v" id="tp-h">—</span></div>
+              <button class="btn btn-sm" style="margin-top:10px;" onclick="openEvidence()">View AI Evidence</button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>Forensic Detections</h3><span class="hint">8 checks</span></div>
+            <div class="card-pad"><div class="check-list" id="tamper-list"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FACE VERIFICATION ===== -->
+    <section class="view" id="view-face">
+      <div class="hero-head"><h1>Face Verification</h1><p>Compare the photo on the document against a live or uploaded photo of the bearer.</p></div>
+      <div id="fv-empty" class="card"><div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="10" r="3.2"/><path d="M6 19c1.5-3 3.5-4.2 6-4.2s4.5 1.2 6 4.2"/></svg><div class="t">No document loaded</div><div class="s">Start a screening to enable face verification.</div></div></div>
+      <div id="fv-content" style="display:none;">
+        <div class="card card-pad">
+          <div class="face-panels">
+            <div>
+              <div class="hint" style="margin-bottom:8px;font-weight:700;color:var(--ink-300);">Document Photo</div>
+              <div class="face-slot"><div class="slot-tag">DOC</div><canvas id="fv-doc-canvas" style="width:100%;height:100%;object-fit:cover;"></canvas></div>
+            </div>
+            <div>
+              <div class="hint" style="margin-bottom:8px;font-weight:700;color:var(--ink-300);">Live / Uploaded Photo</div>
+              <div class="face-slot" id="fv-person-slot">
+                <div class="placeholder" id="fv-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="10" r="3.2"/><path d="M6 19c1.5-3 3.5-4.2 6-4.2s4.5 1.2 6 4.2"/></svg><div>No photo yet</div></div>
+                <video id="fv-video" style="display:none;" autoplay playsinline></video>
+                <img id="fv-photo" style="display:none;">
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;justify-content:center;margin-top:16px;">
+            <input type="file" id="fv-file-input" accept="image/*" style="display:none;">
+            <button class="btn" onclick="document.getElementById('fv-file-input').click()">Upload Face Photo</button>
+            <button class="btn" id="fv-cam-btn" onclick="openFaceCamera()">Use Camera</button>
+            <button class="btn btn-primary" id="fv-capture-btn" style="display:none;" onclick="captureFace()">Capture</button>
+          </div>
+
+          <div id="fv-result" style="display:none;">
+            <div class="match-meter">
+              <div class="match-ring">
+                <svg width="140" height="140" viewBox="0 0 140 140">
+                  <circle cx="70" cy="70" r="60" fill="none" stroke="var(--navy-700)" stroke-width="10"/>
+                  <circle id="fv-ring" cx="70" cy="70" r="60" fill="none" stroke="var(--cyan)" stroke-width="10" stroke-linecap="round" stroke-dasharray="377" stroke-dashoffset="377"/>
+                </svg>
+                <div class="match-center"><div class="n" id="fv-score">—</div><div class="s">MATCH SCORE</div></div>
+              </div>
+            </div>
+            <div class="grid cols-3" style="margin-top:20px;">
+              <div class="card card-pad" style="text-align:center;"><div class="hint">Face Quality</div><div style="font-weight:800;margin-top:6px;" id="fv-quality">—</div></div>
+              <div class="card card-pad" style="text-align:center;"><div class="hint">Liveness</div><div style="font-weight:800;margin-top:6px;" id="fv-live">Demo Verified</div></div>
+              <div class="card card-pad" style="text-align:center;"><div class="hint">Identity Match</div><div style="font-weight:800;margin-top:6px;" id="fv-match">—</div></div>
+            </div>
+            <div style="text-align:center;margin-top:16px;" id="fv-status-badge"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== RISK ASSESSMENT ===== -->
+    <section class="view" id="view-risk">
+      <div class="hero-head"><h1>AI Risk Assessment</h1><p>Combined module scoring and final screening decision.</p></div>
+      <div id="risk-empty" class="card"><div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20h16M7 20V10M12 20V4M17 20v-7"/></svg><div class="t">No risk assessment yet</div><div class="s">Complete a screening to generate the risk score.</div></div></div>
+      <div id="risk-content" style="display:none;">
+        <div class="grid cols-2">
+          <div class="card">
+            <div class="card-head"><h3>Composite Risk Score</h3></div>
+            <div class="gauge-wrap">
+              <svg width="220" height="220" viewBox="0 0 220 220">
+                <circle cx="110" cy="110" r="92" fill="none" stroke="var(--navy-700)" stroke-width="16"/>
+                <circle id="risk-ring" cx="110" cy="110" r="92" fill="none" stroke="var(--green)" stroke-width="16" stroke-linecap="round" stroke-dasharray="578" stroke-dashoffset="578" transform="rotate(-90 110 110)"/>
+              </svg>
+              <div class="gauge-num" id="risk-num">—</div>
+              <div class="gauge-max">/ 100</div>
+              <div class="gauge-label" id="risk-tag">—</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>Risk Breakdown</h3><span class="hint">per module</span></div>
+            <div class="card-pad" id="risk-breakdown"></div>
+          </div>
+        </div>
+
+        <div class="section-title">Fraud Indicators</div>
+        <div class="card card-pad" id="fraud-indicators"></div>
+
+        <div class="section-title">Final Decision</div>
+        <div id="final-decision"></div>
+
+        <div class="wizard-actions">
+          <button class="btn" onclick="goto('trail')">View Investigation Trail</button>
+          <button class="btn btn-primary" onclick="goto('reports')">Generate Screening Report →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== HISTORY ===== -->
+    <section class="view" id="view-history">
+      <div class="hero-head"><h1>Screening History</h1><p>All completed and in-progress screenings on this device.</p></div>
+      <div class="filter-row">
+        <input class="input" id="hist-search" placeholder="Search by name, case ID or country..." oninput="renderHistory()">
+        <select class="input" id="hist-filter" onchange="renderHistory()">
+          <option value="all">All statuses</option>
+          <option value="Verified">Verified</option>
+          <option value="Review Required">Review Required</option>
+          <option value="High Risk">High Risk</option>
+        </select>
+      </div>
+      <div class="card">
+        <table>
+          <thead><tr><th>Case ID</th><th>Document</th><th>Name</th><th>Country</th><th>Risk Score</th><th>Status</th><th>Date</th><th class="tright">Action</th></tr></thead>
+          <tbody id="hist-table-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===== TRAIL ===== -->
+    <section class="view" id="view-trail">
+      <div class="hero-head"><h1>Investigation Trail</h1><p>Chronological audit log of every screening action, across all cases.</p></div>
+      <div class="card card-pad" id="trail-list"></div>
+    </section>
+
+    <!-- ===== REPORTS ===== -->
+    <section class="view" id="view-reports">
+      <div class="hero-head"><h1>Reports</h1><p>Generate a downloadable screening report for a completed case.</p></div>
+      <div class="filter-row">
+        <select class="input" id="report-case-select" onchange="renderReport()"></select>
+        <button class="btn btn-primary" onclick="downloadReport()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4M7 9l5-5 5 5"/><rect x="3" y="16" width="18" height="5" rx="1.5"/></svg> Download Report</button>
+        <button class="btn" onclick="window.print()">Print / Save as PDF</button>
+      </div>
+      <div id="report-empty" class="card"><div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 2h9l5 5v15H6z"/></svg><div class="t">No cases yet</div><div class="s">Run a screening to generate your first report.</div></div></div>
+      <div id="print-area"></div>
+    </section>
+
+    <!-- ===== SETTINGS ===== -->
+    <section class="view" id="view-settings">
+      <div class="hero-head"><h1>Settings</h1><p>Demo environment configuration. Changes are not persisted to any external system.</p></div>
+      <div class="card card-pad">
+        <div class="settings-row"><div><div class="t">Auto-run OCR on upload</div><div class="s">Start extraction immediately after intake</div></div><div class="switch on" onclick="this.classList.toggle('on')"><div class="knob"></div></div></div>
+        <div class="settings-row"><div><div class="t">Strict tampering sensitivity</div><div class="s">Flag borderline anomalies as suspicious</div></div><div class="switch" onclick="this.classList.toggle('on')"><div class="knob"></div></div></div>
+        <div class="settings-row"><div><div class="t">Require face verification</div><div class="s">Block final decision until face check completes</div></div><div class="switch on" onclick="this.classList.toggle('on')"><div class="knob"></div></div></div>
+        <div class="settings-row"><div><div class="t">Store demo case history locally</div><div class="s">Keep screening records in this browser session</div></div><div class="switch on" onclick="this.classList.toggle('on')"><div class="knob"></div></div></div>
+      </div>
+      <div class="section-title">About this Prototype</div>
+      <div class="card card-pad" style="font-size:13px;color:var(--ink-300);line-height:1.7;">
+        BorderShield AI is a Smart India Hackathon 2026 demonstration prototype. All identity data, document images, verification-database records and match results shown in this application are <strong>simulated</strong> for demonstration purposes. This system is <strong>not</strong> connected to the Ministry of Home Affairs, SSB, any government database, or any real border-control or immigration system.
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<div class="modal-overlay" id="evidence-modal">
+  <div class="modal">
+    <h4>AI Evidence — Suspicious Region</h4>
+    <p id="evidence-text">Potential inconsistency detected between surrounding text compression patterns and the selected region.</p>
+    <div class="modal-close"><button class="btn btn-primary" onclick="closeEvidence()">Close</button></div>
+  </div>
+</div>
+
+<div id="toast-host"></div>
+
+<script src="script.js"> </script>
+</body>
+</html>
